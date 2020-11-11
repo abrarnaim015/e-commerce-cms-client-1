@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div>
-      <NavBar></NavBar>
+      <NavBar/>
     </div>
     <div id="table-data-produck">
       <div class=" container p-0">

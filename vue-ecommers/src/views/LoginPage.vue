@@ -9,23 +9,19 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                     <h5 class="card-title text-center">Log In</h5>
-                    <form class="form-signin">
+                    <form @submit.prevent="userLogin" class="form-signin">
                         <div class="form-label-group">
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            <input v-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                             <label for="inputEmail">Email address</label>
                         </div>
-                        <div class="form-label-group">
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <div class="form-label-group mb-5">
+                            <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             <label for="inputPassword">Password</label>
                         </div>
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Remember password</label>
-                        </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"><router-link class=" text-light" to="/HomePage">Log in</router-link></button>
                         <hr class="my-4">
                             <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
-                            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">Registration</button>
+                            <button class="btn btn-lg bg-dark btn-block text-uppercase" type="submit"><router-link class="dropdown-item text-decoration-none bg-dark text-light" to="/registerpage">Registration</router-link></button>
                     </form>
                     </div>
                 </div>
@@ -37,6 +33,33 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  data () {
+    return {
+      email: '',
+      password: '',
+      access_token: localStorage.getItem('access_token'),
+      changePage: ''
+    }
+  },
+  methods: {
+    userLogin () {
+      const data = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('loginAdmin', data)
+      if (this.access_token) {
+        this.changePage = '/HomePage'
+      }
+    }
+  },
+  created () {
+    if (!this.access_token) {
+      this.$router.push({ name: 'LoginPage' })
+    } else {
+      this.$router.push({ name: 'HomePage' })
+    }
+  }
 }
 </script>

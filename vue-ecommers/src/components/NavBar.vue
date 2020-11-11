@@ -4,24 +4,24 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li id="nameOLS" class="nav-item active">
-                    <a class="nav-link" href="/homepage">Sainapa-store</a>
+                    <router-link class=" text-light" to="/homepage">Sainapa-store</router-link>
                 </li>
-                <li class="nav-item active mt-3">
-                    <a id="add-todo" class="nav-link" href="/addproduct">Add Product<span class="sr-only">(current)</span></a>
+                <li class="nav-item active mt-3 ml-3">
+                    <router-link class=" text-light text-decoration-none" to="/addproduct">Add Product<span class="sr-only">(current)</span></router-link>
                 </li>
-                <li class="nav-item dropdown mt-3">
+                <li class="nav-item dropdown mt-2">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other</a>
                     <div class="dropdown-menu dropdown-secondary">
-                    <a class="dropdown-item" href="/cardpage">Show Product</a>
-                    <a class="dropdown-item" href="/editproduct">Edit</a>
-                    <a class="dropdown-item" href="/">Login</a>
-                    <a class="dropdown-item" href="/registerpage">Register</a>
+                    <router-link class="dropdown-item" to="/cardpage">Show Product</router-link>
+                    <router-link class="dropdown-item" to="/editproduct">Edit</router-link>
+                    <router-link class="dropdown-item" to="/">Login</router-link>
+                    <router-link class="dropdown-item" to="/registerpage">Register</router-link>
                     </div>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
-                <li id="nameOLS_logout" class="nav-item mt-2">
-                    <a id="btn-logout" class="nav-link" href="/">Log Out</a>
+                <li id="nameOLS_logout" class="nav-item mt-3">
+                    <router-link class="nav-link" to="/">Log Out</router-link>
                 </li>
             </ul>
         </div>
