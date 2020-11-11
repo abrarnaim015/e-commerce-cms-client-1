@@ -47,15 +47,7 @@ export default new Vuex.Store({
         email: dataAdminLogin.email,
         password: dataAdminLogin.password
       }
-      axios
-        .post('/login/admin', payload)
-        .then(({ data }) => {
-          const accesstoken = data.access_token
-          localStorage.setItem('access_token', accesstoken)
-          console.log(accesstoken)
-          context.commit('postLoginAdmin', accesstoken)
-        })
-        .catch(err => console.log(err))
+      return axios.post('/login/admin', payload)
     },
     regisCustomer (context, dataRegisCustomer) {
       const payload = {

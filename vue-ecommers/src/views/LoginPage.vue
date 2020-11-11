@@ -18,7 +18,7 @@
                             <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                             <label for="inputPassword">Password</label>
                         </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"><router-link class=" text-light" to="/HomePage">Log in</router-link></button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"><router-link class=" text-light" :to="changePage">Log in</router-link></button>
                         <hr class="my-4">
                             <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
                             <button class="btn btn-lg bg-dark btn-block text-uppercase" type="submit"><router-link class="dropdown-item text-decoration-none bg-dark text-light" to="/registerpage">Registration</router-link></button>
@@ -38,8 +38,8 @@ export default {
     return {
       email: '',
       password: '',
-      access_token: localStorage.getItem('access_token'),
-      changePage: ''
+      changePage: '',
+      access_token: ''
     }
   },
   methods: {
@@ -49,13 +49,18 @@ export default {
         password: this.password
       }
       this.$store.dispatch('loginAdmin', data)
-      if (this.access_token) {
-        this.changePage = '/HomePage'
-      }
+        .then(({ data }) => {
+          const accesstoken = data.access_token
+          localStorage.setItem('access_token', accesstoken)
+          this.access_token = accesstoken
+          console.log(accesstoken)
+          this.$router.push({ name: 'HomePage' })
+        })
+        .catch(err => console.log(err))
     }
   },
   created () {
-    if (!this.access_token) {
+    if (this.access_token === '') {
       this.$router.push({ name: 'LoginPage' })
     } else {
       this.$router.push({ name: 'HomePage' })
