@@ -140,7 +140,12 @@
     }
   }
 
-
+/* =============img slide============================= */
+carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
 /* ======navbar======================================= */
 
 #logoOLS{
@@ -155,6 +160,10 @@
 #nameOLS_logout a{
     font-family: 'Pacifico', cursive;
     font-size: 15px;
+}
+
+#nameOLS_title_edit h1{
+    font-family: 'Pacifico', cursive;
 }
 
 /* ================================================== */
