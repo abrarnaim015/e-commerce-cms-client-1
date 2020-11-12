@@ -44,6 +44,13 @@ export default {
       this.$store.dispatch('deleteDataProduct', id)
         .then(({ data }) => {
           this.$router.push({ name: 'HomePage' })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your Kanban has been Delete',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch(err => console.log(err))
     }
