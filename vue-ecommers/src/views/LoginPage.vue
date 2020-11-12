@@ -52,15 +52,21 @@ export default {
         .then(({ data }) => {
           const accesstoken = data.access_token
           localStorage.setItem('access_token', accesstoken)
-          this.access_token = accesstoken
           console.log(accesstoken)
           this.$router.push({ name: 'HomePage' })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `Welcome`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
         .catch(err => console.log(err))
     }
   },
   created () {
-    if (this.access_token === '') {
+    if (!localStorage.getItem('access_token')) {
       this.$router.push({ name: 'LoginPage' })
     } else {
       this.$router.push({ name: 'HomePage' })

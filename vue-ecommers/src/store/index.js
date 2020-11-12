@@ -74,28 +74,19 @@ export default new Vuex.Store({
         .catch(err => console.log(err))
     },
     getAllDataProduct (context) {
+      const accesstoken = localStorage.getItem('access_token')
       axios
-        .get('/product')
+        .get('/product', ({ headers: { access_token: accesstoken } }))
         .then(({ data }) => {
           console.log(data)
           context.commit('setDataAllProduct', data)
         })
         .catch(err => console.log(err))
-    }
-    // createProduct (context, dataCreate) {
-    //   axios
-    //     .post('/product')
-    //     .data({
-    //       title: dataCreate.title,
-    //       image_url: dataCreate.image_url,
-    //       price: dataCreate.price,
-    //       stock: dataCreate.stock
-    //     })
-    //     .then(({ data }) => {
-    //       context.commit('postDataCreate', data)
-    //     })
-    //     .catch(err => console.log(err))
-    // },
+    },
+    createProduct (context, dataCreate) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.post('/product', dataCreate, ({ headers: { access_token: accesstoken } }))
+    },
     // findDataProductById (context, id) {
     //   axios
     //     .get(`/product/${id}`)
@@ -118,14 +109,10 @@ export default new Vuex.Store({
     //     })
     //     .catch(err => console.log(err))
     // },
-    // deleteDataProduct (context, id) {
-    //   axios
-    //     .delete(`/product/${id}`)
-    //     .then(({ data }) => {
-    //       context.commit('deleteProduct', data)
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+    deleteDataProduct (context, id) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.delete(`/product/${id}`, ({ headers: { access_token: accesstoken } }))
+    }
   },
   modules: {
   }

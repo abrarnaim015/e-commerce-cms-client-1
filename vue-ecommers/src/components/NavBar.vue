@@ -21,7 +21,7 @@
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li id="nameOLS_logout" class="nav-item mt-3">
-                    <router-link class="nav-link" to="/">Log Out</router-link>
+                    <a @click="deleteAccessToken" class="nav-link" href="#">Log Out</a>
                 </li>
             </ul>
         </div>
@@ -31,7 +31,13 @@
 
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  methods: {
+    deleteAccessToken () {
+      localStorage.clear()
+      this.$router.push({ name: 'LoginPage' })
+    }
+  }
 }
 </script>
 
