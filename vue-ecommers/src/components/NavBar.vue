@@ -34,6 +34,8 @@ export default {
   name: 'NavBar',
   methods: {
     deleteAccessToken () {
+      localStorage.clear()
+      this.$router.push({ name: 'LoginPage' })
       Swal.fire({
         position: 'top-end',
         icon: 'success',
