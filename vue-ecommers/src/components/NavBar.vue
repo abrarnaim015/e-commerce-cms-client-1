@@ -13,9 +13,9 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other</a>
                     <div class="dropdown-menu dropdown-secondary">
                     <router-link class="dropdown-item" to="/cardpage">Show Product</router-link>
-                    <router-link class="dropdown-item" to="/editproduct">Edit</router-link>
-                    <router-link class="dropdown-item" to="/">Login</router-link>
-                    <router-link class="dropdown-item" to="/registerpage">Register</router-link>
+                    <!-- <router-link class="dropdown-item" to="/editproduct">Edit</router-link> -->
+                    <!-- <router-link class="dropdown-item" to="/">Login</router-link> -->
+                    <!-- <router-link class="dropdown-item" to="/registerpage">Register</router-link> -->
                     </div>
                 </li>
             </ul>
@@ -30,18 +30,32 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   name: 'NavBar',
   methods: {
     deleteAccessToken () {
-      localStorage.clear()
-      this.$router.push({ name: 'LoginPage' })
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Your has been Logout',
-        showConfirmButton: false,
-        timer: 1500
+        title: 'Are you sure?',
+        text: "You won't be Log out!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Log out!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.clear()
+          this.$router.push({ name: 'LoginPage' })
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your has been Logout',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       })
     }
   }

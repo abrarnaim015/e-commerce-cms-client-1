@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   name: 'Home',
   data () {
@@ -57,12 +59,21 @@ export default {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: `Welcome`,
+            title: 'Welcome',
             showConfirmButton: false,
             timer: 1500
           })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops, Sorry...',
+            text: 'Something went wrong, Internal Server ERROR',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(err)
+        })
     }
   },
   created () {

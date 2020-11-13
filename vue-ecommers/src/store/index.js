@@ -78,7 +78,6 @@ export default new Vuex.Store({
       axios
         .get('/product', ({ headers: { access_token: accesstoken } }))
         .then(({ data }) => {
-          console.log(data)
           context.commit('setDataAllProduct', data)
         })
         .catch(err => console.log(err))
@@ -87,28 +86,17 @@ export default new Vuex.Store({
       const accesstoken = localStorage.getItem('access_token')
       return axios.post('/product', dataCreate, ({ headers: { access_token: accesstoken } }))
     },
-    // findDataProductById (context, id) {
-    //   axios
-    //     .get(`/product/${id}`)
-    //     .then(({ data }) => {
-    //       context.commit('getDataProductById', data)
-    //     })
-    //     .catch(err => console.log(err))
-    // },
-    // editDataProduct (context, dataEdit) {
-    //   axios
-    //     .put(`/product/${dataEdit.id}`)
-    //     .data({
-    //       title: dataEdit.title,
-    //       image_url: dataEdit.image_url,
-    //       price: dataEdit.price,
-    //       stock: dataEdit.stock
-    //     })
-    //     .then(({ data }) => {
-    //       context.commit('putDataEdit', data)
-    //     })
-    //     .catch(err => console.log(err))
-    // },
+    findDataProductById (context, id) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.get(`/product/${id}`, ({ headers: { access_token: accesstoken } }))
+    },
+    getdataEdit (context, data) {
+      context.commit('getDataProductById', data)
+    },
+    editDataProduct (context, dataEdit) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.put(`/product/${dataEdit.id}`, dataEdit, ({ headers: { access_token: accesstoken } }))
+    },
     deleteDataProduct (context, id) {
       const accesstoken = localStorage.getItem('access_token')
       return axios.delete(`/product/${id}`, ({ headers: { access_token: accesstoken } }))

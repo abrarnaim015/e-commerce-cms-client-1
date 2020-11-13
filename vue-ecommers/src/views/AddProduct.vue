@@ -36,6 +36,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'AddProduct',
@@ -57,6 +58,7 @@ export default {
       }
       this.$store.dispatch('createProduct', payload)
         .then(({ data }) => {
+          this.$store.dispatch('getAllDataProduct')
           this.$router.push({ name: 'HomePage' })
           Swal.fire({
             position: 'top-end',
@@ -66,7 +68,16 @@ export default {
             timer: 1500
           })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops, Sorry...',
+            text: 'Something went wrong witf Your Data Product!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          console.log(err)
+        })
     }
   },
   components: {

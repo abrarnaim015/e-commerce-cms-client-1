@@ -5,7 +5,7 @@
     </div>
     <div id="table-data-produck">
       <div class=" container p-0">
-          <div id="nameOLS_title_edit" class=" d-flex justify-content-center my-2">
+          <div id="nameOLS_title_edit" class=" d-flex justify-content-center my-2 text-light">
               <h1>Table Data product</h1>
           </div>
           <table class="table table-sm table-dark text-center">
