@@ -6,6 +6,9 @@ import HomePage from '../views/HomePage.vue'
 import CardPage from '../views/CardPage.vue'
 import AddProduct from '../views/AddProduct.vue'
 import EditProduct from '../views/EditProduct.vue'
+import AddBenner from '../views/AddBenner'
+import AllBenner from '../views/AllBenner'
+import EditBenner from '../views/EditBenner'
 
 Vue.use(VueRouter)
 
@@ -39,6 +42,21 @@ const routes = [
     path: '/editproduct',
     name: 'EditProduct',
     component: EditProduct
+  },
+  {
+    path: '/addbenner',
+    name: 'AddBenner',
+    component: AddBenner
+  },
+  {
+    path: '/allbenner',
+    name: 'AllBenner',
+    component: AllBenner
+  },
+  {
+    path: '/editbenner',
+    name: 'EditBenner',
+    component: EditBenner
   }
 ]
 

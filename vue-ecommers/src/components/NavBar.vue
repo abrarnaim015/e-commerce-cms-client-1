@@ -7,15 +7,15 @@
                     <router-link class=" text-light" to="/homepage">Sainapa-store</router-link>
                 </li>
                 <li class="nav-item active mt-3 ml-3">
-                    <router-link class=" text-light text-decoration-none" to="/addproduct">Add Product<span class="sr-only">(current)</span></router-link>
+                    <router-link class=" text-light text-decoration-none mx-1" to="/addproduct">Add Product<span class="sr-only">(current)</span></router-link>
+                    <router-link class=" text-light text-decoration-none mx-1" to="/addbenner">Add Benner<span class="sr-only">(current)</span></router-link>
+
                 </li>
                 <li class="nav-item dropdown mt-2">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Other</a>
                     <div class="dropdown-menu dropdown-secondary">
                     <router-link class="dropdown-item" to="/cardpage">Show Product</router-link>
-                    <!-- <router-link class="dropdown-item" to="/editproduct">Edit</router-link> -->
-                    <!-- <router-link class="dropdown-item" to="/">Login</router-link> -->
-                    <!-- <router-link class="dropdown-item" to="/registerpage">Register</router-link> -->
+                    <a @click.prevent="getAllBenner" href="" class="dropdown-item">All Benner</a>
                     </div>
                 </li>
             </ul>
@@ -57,6 +57,10 @@ export default {
           })
         }
       })
+    },
+    getAllBenner () {
+      this.$store.dispatch('getAllBenner')
+      this.$router.push({ name: 'AllBenner' })
     }
   }
 }

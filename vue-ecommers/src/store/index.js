@@ -13,7 +13,9 @@ export default new Vuex.Store({
     deleteProduct: [],
     accesstoken: '',
     postRegisCustomer: [],
-    postLoginCustomer: []
+    postLoginCustomer: [],
+    allDataBenner: [],
+    getDataBennerById: []
   },
   mutations: {
     setDataAllProduct (state, payload) {
@@ -39,6 +41,12 @@ export default new Vuex.Store({
     },
     postLoginCustomer (state, payload) {
       state.postLoginCustomer = payload
+    },
+    setDataAllBenner (state, payload) {
+      state.allDataBenner = payload
+    },
+    getDataBennerById (state, paylod) {
+      state.getDataBennerById = paylod
     }
   },
   actions: {
@@ -100,6 +108,34 @@ export default new Vuex.Store({
     deleteDataProduct (context, id) {
       const accesstoken = localStorage.getItem('access_token')
       return axios.delete(`/product/${id}`, ({ headers: { access_token: accesstoken } }))
+    },
+    getAllBenner (context) {
+      const accesstoken = localStorage.getItem('access_token')
+      axios
+        .get('/benner', ({ headers: { access_token: accesstoken } }))
+        .then(({ data }) => {
+          context.commit('setDataAllBenner', data)
+        })
+        .catch(err => console.log(err))
+    },
+    createBenner (context, dataCreate) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.post('/benner', dataCreate, ({ headers: { access_token: accesstoken } }))
+    },
+    deleteDataBenner (context, id) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.delete(`/benner/${id}`, ({ headers: { access_token: accesstoken } }))
+    },
+    findDataBenner (context, id) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.get(`/benner/${id}`, ({ headers: { access_token: accesstoken } }))
+    },
+    getDataEditBenner (context, data) {
+      context.commit('getDataBennerById', data)
+    },
+    editDataBenner (context, dataEdit) {
+      const accesstoken = localStorage.getItem('access_token')
+      return axios.put(`/benner/${dataEdit.id}`, dataEdit, ({ headers: { access_token: accesstoken } }))
     }
   },
   modules: {
