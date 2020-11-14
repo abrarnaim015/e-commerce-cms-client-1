@@ -7,7 +7,7 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <div class=" container d-flex p-0">
+    <div class=" container d-flex p-0 mb-5">
         <div class=" row">
             <div class=" col-3">
                 <div class="card my-2 bg-secondary text-light">
@@ -211,16 +211,21 @@
             </div>
         </div>
     </div>
+    <div>
+        <Footer/>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'CardPage',
   components: {
-    NavBar
+    NavBar,
+    Footer
   }
 }
 </script>

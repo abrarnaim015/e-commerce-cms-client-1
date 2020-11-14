@@ -8,7 +8,7 @@
           <div id="nameOLS_title_edit" class=" d-flex justify-content-center my-2 text-light">
               <h1>Table Data product</h1>
           </div>
-          <table class="table table-sm table-dark text-center">
+          <table class="table table-sm text-center mb-5">
             <TableProduct
               :allDataProduct="allDataProduct"
               >
@@ -16,12 +16,16 @@
           </table>
       </div>
     </div>
+    <div>
+      <Footer/>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
 import TableProduct from '@/components/TableProduct'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'HomePage',
@@ -31,7 +35,8 @@ export default {
   },
   components: {
     NavBar,
-    TableProduct
+    TableProduct,
+    Footer
   },
   methods: {
     getAllDataProduct () {
@@ -55,5 +60,8 @@ export default {
 </script>
 
 <style>
-
+.table{
+  background-color: rgba(0,0,0,0.5);
+  color: whitesmoke;
+}
 </style>

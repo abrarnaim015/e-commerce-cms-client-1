@@ -31,12 +31,16 @@
             </div>
         </div>
     </div>
+    <div class="footer fixed-bottom">
+      <Footer/>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Swal from 'sweetalert2'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'AddProduct',
@@ -81,7 +85,8 @@ export default {
     }
   },
   components: {
-    NavBar
+    NavBar,
+    Footer
   }
 }
 </script>

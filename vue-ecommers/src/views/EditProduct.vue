@@ -3,7 +3,7 @@
     <div>
         <NavBar/>
     </div>
-    <div class=" container my-2 p-0 ">
+    <div class=" container my-2 p-0">
         <div id="nameOLS_title_edit" class=" header text-center">
             <h1>Edit Product From</h1>
         </div>
@@ -31,12 +31,16 @@
             </div>
         </div>
     </div>
+    <div class="footer fixed-bottom">
+      <Footer/>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
 import Swal from 'sweetalert2'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'EditProduct',
@@ -94,13 +98,14 @@ export default {
   computed: {
   },
   components: {
-    NavBar
+    NavBar,
+    Footer
   },
   created () {
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
