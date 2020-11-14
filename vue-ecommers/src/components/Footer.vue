@@ -25,6 +25,4 @@ export default {
   text-decoration: none;
   color: whitesmoke;
 }
-.posision{
-}
 </style>
