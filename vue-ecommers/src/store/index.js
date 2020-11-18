@@ -112,7 +112,7 @@ export default new Vuex.Store({
     getAllBenner (context) {
       const accesstoken = localStorage.getItem('access_token')
       axios
-        .get('/benner', ({ headers: { access_token: accesstoken } }))
+        .get('/banner', ({ headers: { access_token: accesstoken } }))
         .then(({ data }) => {
           context.commit('setDataAllBenner', data)
         })
@@ -120,22 +120,22 @@ export default new Vuex.Store({
     },
     createBenner (context, dataCreate) {
       const accesstoken = localStorage.getItem('access_token')
-      return axios.post('/benner', dataCreate, ({ headers: { access_token: accesstoken } }))
+      return axios.post('/banner', dataCreate, ({ headers: { access_token: accesstoken } }))
     },
     deleteDataBenner (context, id) {
       const accesstoken = localStorage.getItem('access_token')
-      return axios.delete(`/benner/${id}`, ({ headers: { access_token: accesstoken } }))
+      return axios.delete(`/banner/${id}`, ({ headers: { access_token: accesstoken } }))
     },
     findDataBenner (context, id) {
       const accesstoken = localStorage.getItem('access_token')
-      return axios.get(`/benner/${id}`, ({ headers: { access_token: accesstoken } }))
+      return axios.get(`/banner/${id}`, ({ headers: { access_token: accesstoken } }))
     },
     getDataEditBenner (context, data) {
       context.commit('getDataBennerById', data)
     },
     editDataBenner (context, dataEdit) {
       const accesstoken = localStorage.getItem('access_token')
-      return axios.put(`/benner/${dataEdit.id}`, dataEdit, ({ headers: { access_token: accesstoken } }))
+      return axios.put(`/banner/${dataEdit.id}`, dataEdit, ({ headers: { access_token: accesstoken } }))
     }
   },
   modules: {
